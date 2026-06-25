@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: tenir-governance
+Version: 1.0.0rc2
+Summary: TENIR 2C Institutional Governance Runtime — R4+R5 Unified
+Requires-Python: >=3.10
