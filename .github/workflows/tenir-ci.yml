@@ -18,17 +18,16 @@ env:
 
 jobs:
 
-  # ── Gate 0: Policy contract must be valid before anything else runs ──────────
+ # ── Gate 0: Policy contract must be valid before anything else runs ──────────
   policy-gate:
-  name: "Gate 0 — Policy Contract + Hard Gate"
-  runs-on: ubuntu-24.04
-  env:
-    ACTIONS_RUNNER_FORCE_ACTIONS_NODE_VERSION: node22
-  steps:
-    - uses: actions/checkout@v4.2.2
-    - uses: actions/setup-python@v5.4.0
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
+    name: "Gate 0 — Policy Contract + Hard Gate"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install governance package
         run: |
@@ -70,8 +69,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: policy-gate
     steps:
-      - uses: actions/checkout@v4.2.2
-      - uses: actions/setup-python@v5.4.0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -100,8 +99,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: policy-gate
     steps:
-      - uses: actions/checkout@v4.2.2
-      - uses: actions/setup-python@v5.4.0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -120,8 +119,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: policy-gate
     steps:
-      - uses: actions/checkout@v4.2.2
-      - uses: actions/setup-python@v5.4.0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -150,8 +149,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: policy-gate
     steps:
-      - uses: actions/checkout@v4.2.2
-      - uses: actions/setup-python@v5.4.0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -171,8 +170,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: policy-gate
     steps:
-      - uses: actions/checkout@v4.2.2
-      - uses: actions/setup-python@v5.4.0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
