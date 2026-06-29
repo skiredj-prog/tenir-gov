@@ -21,12 +21,19 @@ jobs:
   # ── Gate 0: Policy contract must be valid before anything else runs ──────────
   policy-gate:
     name: "Gate 0 — Policy Contract + Hard Gate"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4.2.2
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - uses: actions/setup-python@v5.4.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+
 
       - name: Install governance package
         run: |
@@ -59,6 +66,7 @@ jobs:
         with:
           name: validator-report
           path: validator_report.json
+         
 
 
   # ── Gate 1: Regression corpus (281 golden cases) ─────────────────────────────
