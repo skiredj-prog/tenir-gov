@@ -435,7 +435,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     """
     import argparse
     parser = argparse.ArgumentParser(description="TENIR Governance Validator — CI Gate")
-    parser.add_argument("--policy", choices=["default", "um6p", "ocp"],
+    parser.add_argument("--policy", choices=["default"],
                         default="default", help="Policy variant to validate against")
     parser.add_argument("--expected-version", help="Assert exact policy version string")
     parser.add_argument("--ledger", help="Path to a JSONL ledger file to validate")
@@ -444,9 +444,13 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     policy_map = {
         "default": PolicyEngine.default,
-        "um6p":    PolicyEngine.um6p_shadow_v4,
-        "ocp":     PolicyEngine.ocp_sovereign_pilot,
     }
+    # If the user provides an invalid policy choice, it will now fail gracefully 
+    # instead of looking for non-existent attributes.
+    if args.policy not in policy_map:
+        print(f"Error: Policy {args.policy} not supported in this version.")
+        return 1
+        
     policy = policy_map[args.policy]()
 
     validator = TENIRValidator(policy=policy, expected_version=args.expected_version)
