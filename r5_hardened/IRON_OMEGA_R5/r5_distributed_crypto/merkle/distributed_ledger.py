@@ -631,7 +631,7 @@ class DistributedLedger:
         intended_block: bool,
         rationale: str,
         policy_version: str,
-        tenant_id: str = "um6p",
+        tenant_id: str = "partner_a",
         override_signature: Optional[str] = None,
         override_operator: Optional[str] = None,
     ) -> Dict[str, Any]:

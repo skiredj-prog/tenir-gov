@@ -865,13 +865,13 @@ class CreativeScenarioTests(unittest.TestCase):
                 velocity=1.0,
                 capacity=1.0,
                 option_space=0.9,
-                metadata={"nested": {"partner": "UM6P", "phase": "shadow"}},
+                metadata={"nested": {"partner": "partner_a", "phase": "shadow"}},
             )
             monitor.observe(event)
             entries = list(HashChainedLedger(ledger).iter_entries())
             self.assertEqual(
                 entries[0]["payload"]["event"]["metadata"]["nested"]["partner"],
-                "UM6P",
+                "partner_a",
             )
 
 

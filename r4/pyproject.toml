@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tenir-v4-test"
 version = "4.0.0"
-description = "TENIR R4 Monitor Runtime — UM6P Shadow v4 (internal test package)"
+description = "TENIR R4 Monitor Runtime — partner_a Shadow v4 (internal test package)"
 requires-python = ">=3.10"
 authors = [
     { name = "Abdelaziz Skiredj", email = "skiredj@gmail.com" }

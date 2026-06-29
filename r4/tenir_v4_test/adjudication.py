@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from typing import Any, Mapping
 
 
-SCHEMA_VERSION = "ocp-sovereignty-pilot-v1"
+SCHEMA_VERSION = "partner_b-sovereignty-pilot-v1"
 
 DIMENSION_WEIGHTS: dict[str, dict[str, int]] = {
     "sovereignty": {
@@ -361,7 +361,7 @@ def _executive_summary(
     next_action: str,
 ) -> str:
     return (
-        f"OCP sovereignty posture reads at {family_totals['sovereignty_score']}/100, "
+        f"partner_b sovereignty posture reads at {family_totals['sovereignty_score']}/100, "
         f"adjudication at {family_totals['adjudication_score']}/100, "
         f"systemic loop visibility at {family_totals['systemic_loop_score']}/100, "
         f"and evidence coverage at {family_totals['evidence_coverage_score']}/100. "
@@ -607,14 +607,14 @@ def sample_pilot_template(case: str = "amplified_loop") -> dict[str, Any]:
         "stabilizing_loop": {
             "schema_version": SCHEMA_VERSION,
             "pilot": {
-                "pilot_id": "ocp-sovereignty-stabilizing-loop",
-                "title": "OCP Sovereignty Pilot - Stabilizing Procurement Loop",
-                "institution": "OCP Sovereignty",
+                "pilot_id": "partner_b-sovereignty-stabilizing-loop",
+                "title": "partner_b Sovereignty Pilot - Stabilizing Procurement Loop",
+                "institution": "partner_b Sovereignty",
                 "workflow": "sense-adjudicate-decide-act",
                 "reporting_mode": "dual",
             },
             "tau_profile": {
-                "tau_id": "TAU-OCP-SOV-01",
+                "tau_id": "TAU-partner_b-SOV-01",
                 "protected_identity_statement": (
                     "Protect sovereign decision continuity without sacrificing "
                     "human legibility or bounded intervention."
@@ -739,14 +739,14 @@ def sample_pilot_template(case: str = "amplified_loop") -> dict[str, Any]:
         "amplified_loop": {
             "schema_version": SCHEMA_VERSION,
             "pilot": {
-                "pilot_id": "ocp-sovereignty-amplified-loop",
-                "title": "OCP Sovereignty Pilot - Amplified Maintenance Override Loop",
-                "institution": "OCP Sovereignty",
+                "pilot_id": "partner_b-sovereignty-amplified-loop",
+                "title": "partner_b Sovereignty Pilot - Amplified Maintenance Override Loop",
+                "institution": "partner_b Sovereignty",
                 "workflow": "sense-adjudicate-decide-act",
                 "reporting_mode": "dual",
             },
             "tau_profile": {
-                "tau_id": "TAU-OCP-SOV-01",
+                "tau_id": "TAU-partner_b-SOV-01",
                 "protected_identity_statement": (
                     "Protect sovereign decision continuity without sacrificing "
                     "human legibility or bounded intervention."
@@ -872,14 +872,14 @@ def sample_pilot_template(case: str = "amplified_loop") -> dict[str, Any]:
         "authority_contradiction": {
             "schema_version": SCHEMA_VERSION,
             "pilot": {
-                "pilot_id": "ocp-sovereignty-authority-contradiction",
-                "title": "OCP Sovereignty Pilot - Authority Contradiction Loop",
-                "institution": "OCP Sovereignty",
+                "pilot_id": "partner_b-sovereignty-authority-contradiction",
+                "title": "partner_b Sovereignty Pilot - Authority Contradiction Loop",
+                "institution": "partner_b Sovereignty",
                 "workflow": "sense-adjudicate-decide-act",
                 "reporting_mode": "dual",
             },
             "tau_profile": {
-                "tau_id": "TAU-OCP-SOV-01",
+                "tau_id": "TAU-partner_b-SOV-01",
                 "protected_identity_statement": (
                     "Protect sovereign decision continuity without sacrificing "
                     "human legibility or bounded intervention."

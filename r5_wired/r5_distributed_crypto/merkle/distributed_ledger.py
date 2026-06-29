@@ -471,7 +471,7 @@ class DistributedLedger:
         intended_block: bool,
         rationale: str,
         policy_version: str,
-        tenant_id: str = "um6p",
+        tenant_id: str = "partner_a",
     ) -> Dict[str, Any]:
         """
         Synchronous append — creates and persists a LedgerEntry.

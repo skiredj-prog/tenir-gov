@@ -16,7 +16,7 @@ Philosophy (from TENIR doctrine):
 Usage (R4 migration path):
     from tenir_governance.sdk import TENIRGovernanceClient, GovernanceEvent
 
-    client = TENIRGovernanceClient.for_um6p_shadow()
+    client = TENIRGovernanceClient(policy=PolicyEngine.default())
     event = GovernanceEvent(pressure=0.8, velocity=0.7, capacity=1.0, option_space=0.5)
     result = client.adjudicate(event)
     print(result.decision)           # "allow_with_alert"
@@ -28,13 +28,13 @@ Usage (R5 integration):
     # r5_server.py adjudication endpoint calls:
     result = client.adjudicate_from_nsl(nsl_result)
 
-Usage (Business / UM6P demo):
+Usage (Business demo):
     result = client.adjudicate(event)
     dashboard_payload = result.to_business_payload()
     # Returns human-readable dict for the Copilot / Lens surfaces
 
 Usage (CLI / batch):
-    python -m tenir_governance.sdk --events sample_events.json --policy um6p
+    python -m tenir_governance.sdk --events sample_events.json --policy default
 """
 
 from __future__ import annotations
@@ -198,13 +198,6 @@ class TENIRGovernanceClient:
         if ledger_path:
             ledger_path.parent.mkdir(parents=True, exist_ok=True)
 
-    @classmethod
-    def for_um6p_shadow(cls) -> "TENIRGovernanceClient":
-        return cls(policy=PolicyEngine.um6p_shadow_v4())
-
-    @classmethod
-    def for_ocp_sovereign(cls) -> "TENIRGovernanceClient":
-        return cls(policy=PolicyEngine.ocp_sovereign_pilot())
 
     @classmethod
     def for_demo(cls) -> "TENIRGovernanceClient":
@@ -402,7 +395,7 @@ class TENIRGovernanceClient:
 def main() -> None:
     import argparse, sys
     parser = argparse.ArgumentParser(description="TENIR Governance SDK CLI")
-    parser.add_argument("--policy", choices=["default", "um6p", "ocp"], default="default")
+    parser.add_argument("--policy", choices=["default"], default="default")
     parser.add_argument("--mode", default="shadow-passive")
     parser.add_argument("--events", help="Path to JSON events file")
     parser.add_argument("--pressure", type=float)
@@ -412,8 +405,7 @@ def main() -> None:
     parser.add_argument("--business", action="store_true", help="Show business-layer output")
     args = parser.parse_args()
 
-    policy_map = {"default": PolicyEngine.default, "um6p": PolicyEngine.um6p_shadow_v4,
-                  "ocp": PolicyEngine.ocp_sovereign_pilot}
+    policy_map = {"default": PolicyEngine.default}
     client = TENIRGovernanceClient(policy=policy_map[args.policy](), operating_mode=args.mode.upper().replace("-","_"))
 
     events_to_run = []

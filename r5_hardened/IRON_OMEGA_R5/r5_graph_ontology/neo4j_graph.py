@@ -446,17 +446,17 @@ class Neo4jGraphDB:
 
     async def seed_um6p_ocp_ontology(self) -> None:
         """
-        Seeds the database with the UM6P + OCP institutional ontology.
+        Seeds the database with the partner_a + partner_b institutional ontology.
         Called once during deployment initialization.
         """
         now = datetime.now(timezone.utc).isoformat()
-        um6p_id = "inst-um6p-001"
-        ocp_id = "inst-ocp-001"
+        um6p_id = "inst-partner_a-001"
+        ocp_id = "inst-partner_b-001"
 
         # Institutions
         for inst_id, name, tau in [
             (um6p_id, "Université Mohammed VI Polytechnique", 0.35),
-            (ocp_id, "OCP Group", 0.40),
+            (ocp_id, "partner_b Group", 0.40),
         ]:
             await self.run(
                 CypherQueries.UPSERT_INSTITUTION,
@@ -466,12 +466,12 @@ class Neo4jGraphDB:
 
         # Domains
         domains = [
-            ("dom-um6p-rnd", um6p_id, "RND", "UM6P Research & Development"),
-            ("dom-um6p-legal", um6p_id, "LEGAL", "UM6P Legal & Compliance"),
-            ("dom-um6p-budget", um6p_id, "BUDGET", "UM6P Financial Resource"),
-            ("dom-ocp-procurement", ocp_id, "PROCUREMENT", "OCP Industrial Procurement"),
-            ("dom-ocp-rnd", ocp_id, "RND", "OCP Applied Research"),
-            ("dom-ocp-legal", ocp_id, "LEGAL", "OCP Regulatory Affairs"),
+            ("dom-partner_a-rnd", um6p_id, "RND", "partner_a Research & Development"),
+            ("dom-partner_a-legal", um6p_id, "LEGAL", "partner_a Legal & Compliance"),
+            ("dom-partner_a-budget", um6p_id, "BUDGET", "partner_a Financial Resource"),
+            ("dom-partner_b-procurement", ocp_id, "PROCUREMENT", "partner_b Industrial Procurement"),
+            ("dom-partner_b-rnd", ocp_id, "RND", "partner_b Applied Research"),
+            ("dom-partner_b-legal", ocp_id, "LEGAL", "partner_b Regulatory Affairs"),
         ]
         for domain_id, inst_id, domain_type, name in domains:
             await self.run(
@@ -513,7 +513,7 @@ class Neo4jGraphDB:
                 weight=weight,
             )
 
-        logger.info("[R5-Graph] UM6P/OCP ontology seeded")
+        logger.info("[R5-Graph] partner_a/partner_b ontology seeded")
 
 
 # ─── DEPENDENCY INJECTION ─────────────────────────────────────────────────────

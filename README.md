@@ -61,7 +61,7 @@ tenir-gov/
 │   ├── polymorphic_surface.py Sprint 10 — V5 surface state contract
 │   ├── copy_lint.py           Sprint 9 — public-safe lexicon enforcement
 │   └── ledger_migrate.py      Sprint 11 — ledger label migration
-├── r4/                        ← R4 UM6P Shadow v4 monitor runtime
+├── r4/                        ← R4 partner_a Shadow v4 monitor runtime
 │   ├── tenir_v4_test/         adjudication, control-auth, ledger, models
 │   └── tests/                 61 R4 monitor tests
 ├── r5_hardened/               ← R5 IRON OMEGA — hardened runtime
@@ -139,7 +139,7 @@ pytest tests/ -v --cov=tenir_governance
 ```python
 from tenir_governance import TENIRGovernanceClient, GovernanceEvent
 
-# Use the UM6P Shadow v4 policy profile
+# Use the partner_a Shadow v4 policy profile
 client = TENIRGovernanceClient.for_um6p_shadow()
 result = client.adjudicate(GovernanceEvent(
     pressure=0.8,
@@ -183,8 +183,8 @@ pytest tests/ r4/tests/ \
 
 ```bash
 tenir-validate --policy default           # 9/9 invariant checks
-tenir-validate --policy um6p --json       # UM6P Shadow v4
-tenir-validate --policy ocp               # OCP Sovereign Pilot
+tenir-validate --policy partner_a --json       # partner_a Shadow v4
+tenir-validate --policy partner_b               # partner_b Sovereign Pilot
 ```
 
 ---
@@ -196,8 +196,8 @@ Three governance policy profiles are shipped:
 | Profile | Factory | Use case |
 |:---|:---|:---|
 | `default` | `PolicyEngine.default()` | Canonical baseline |
-| `um6p` | `PolicyEngine.um6p_shadow_v4()` | UM6P Shadow v4 equivalence (`s_alert=0.90`, `event_window=8`) |
-| `ocp` | `PolicyEngine.ocp_sovereign_pilot()` | Tight industrial lock-in (`tau_floor=0.50`, `reaction_budget=3`) |
+| `partner_a` | `PolicyEngine.um6p_shadow_v4()` | partner_a Shadow v4 equivalence (`s_alert=0.90`, `event_window=8`) |
+| `partner_b` | `PolicyEngine.ocp_sovereign_pilot()` | Tight industrial lock-in (`tau_floor=0.50`, `reaction_budget=3`) |
 
 Policy fingerprint (default): `d083e0b82a16c04d`
 

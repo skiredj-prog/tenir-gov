@@ -10,11 +10,11 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ### Summary
 Full production release of TENIR-Gov as an integrated governance middleware.
-Merges R4 (UM6P Shadow v4) and R5 (IRON OMEGA) into a single installable package with a shared canonical contract.
+Merges R4 (partner_a Shadow v4) and R5 (IRON OMEGA) into a single installable package with a shared canonical contract.
 
 ### Added — Governance Package (`tenir_governance`)
 - **Sprint 0** — `nomenclature.py`: single canonical term registry for R4+R5 vocabularies, three-register language system (Canonical / Operator / Public)
-- **Sprint 1** — `policy_engine.py`: frozen `PolicyEngine` dataclass with three factory profiles (default, UM6P Shadow v4, OCP Sovereign Pilot); `evaluate_membrane()` as the sole membrane decision function
+- **Sprint 1** — `policy_engine.py`: frozen `PolicyEngine` dataclass with three factory profiles (default, partner_a Shadow v4, partner_b Sovereign Pilot); `evaluate_membrane()` as the sole membrane decision function
 - **Sprint 2** — `__init__.py`: clean public API boundary; installable via `pip install -e .`
 - **Sprint 3** — `validator.py`: `TENIRValidator` with 9 named invariant checks (POL-001 → NOM-002); CLI (`tenir-validate`) and pytest fixture
 - **Sprint 4** — `regression_corpus.py`: 281 golden `GoldenCase` fixtures across 16 scenario groups
@@ -43,7 +43,7 @@ Merges R4 (UM6P Shadow v4) and R5 (IRON OMEGA) into a single installable package
 ### Validation
 - 445 tests passing (100%): 313 governance package · 61 R4 · 56 R5 hardened · 15 R5 integration
 - 70% statement coverage on `tenir_governance`
-- 9/9 policy invariant checks across default, UM6P, and OCP profiles
+- 9/9 policy invariant checks across default, partner_a, and partner_b profiles
 - Policy fingerprint (default): `d083e0b82a16c04d`
 
 ### Known Limitations
@@ -54,9 +54,9 @@ Merges R4 (UM6P Shadow v4) and R5 (IRON OMEGA) into a single installable package
 
 ---
 
-## [4.0.0] — 2026-01 (UM6P Shadow v4)
+## [4.0.0] — 2026-01 (partner_a Shadow v4)
 
 ### Summary
-R4 release: internal UAT package for UM6P Shadow-mode deployment.
+R4 release: internal UAT package for partner_a Shadow-mode deployment.
 Introduced `TenirMonitor`, `HashChainedLedger`, `OperatorRegistry`, `PolicyBundle`, CAVE adjudication framework, and burn-cost estimation.
 R4 runtime known issues (G1–G6) documented in `HARDENING_REPORT_v1.0.0-rc2.md`; these are addressed by construction in R5 through the shared `PolicyEngine.evaluate_membrane()` contract.

@@ -140,7 +140,7 @@ class TestSharedEngineInLedger:
         ledger_lines = (tmp_path / "integration.jsonl").read_text().strip().split("\n")
         entry = json.loads(ledger_lines[-1])
         payload = entry.get("payload", entry)
-        assert payload.get("policy_version") == "um6p-shadow-v4-test-policy-2"
+        assert payload.get("policy_version") == "partner_a-shadow-v4-test-policy-2"
 
     def test_stable_event_shared_decision_is_allow(
         self, monitor: TenirMonitor, tmp_path: Path

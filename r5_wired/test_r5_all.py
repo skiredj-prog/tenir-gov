@@ -57,9 +57,9 @@ class TestNSLGrammar(unittest.TestCase):
         self.assertGreater(params_risky["pressure"], params_no_risk["pressure"])
 
     def test_identifier_extraction(self):
-        ast, _ = self.compile("Accelerate OCP-H2-2026 project immediately")
+        ast, _ = self.compile("Accelerate partner_b-H2-2026 project immediately")
         if ast.entity and ast.entity.identifier:
-            self.assertIn("OCP-H2-2026", ast.entity.identifier)
+            self.assertIn("partner_b-H2-2026", ast.entity.identifier)
 
     def test_unknown_intent_raises(self):
         from r5_neuro_symbolic.grammar.nsl_grammar import NSLParser
@@ -101,7 +101,7 @@ class TestNSLGrammar(unittest.TestCase):
         self.assertEqual(ast.intent.intent, "DELAY")
 
     def test_query_intent(self):
-        ast, params = self.compile("Review the status of contract OCP-H2-2026")
+        ast, params = self.compile("Review the status of contract partner_b-H2-2026")
         self.assertEqual(ast.intent.intent, "QUERY")
 
     def test_compile_to_event_params_types(self):
@@ -311,7 +311,7 @@ class TestDistributedLedger(unittest.IsolatedAsyncioTestCase):
 
     async def test_append_returns_entry(self):
         entry = await self.ledger.append(
-            tenant_id="um6p", workflow_id="WF-001",
+            tenant_id="partner_a", workflow_id="WF-001",
             membrane_decision="allow", operating_mode="SHADOW",
             s_score=1.2, ds_de=0.05, ces_state="REST", rationale="Test"
         )
@@ -320,7 +320,7 @@ class TestDistributedLedger(unittest.IsolatedAsyncioTestCase):
 
     async def test_genesis_hash_chain(self):
         entry = await self.ledger.append(
-            tenant_id="um6p", workflow_id="WF-001",
+            tenant_id="partner_a", workflow_id="WF-001",
             membrane_decision="allow", operating_mode="SHADOW",
             s_score=1.0, ds_de=0.0, ces_state="REST", rationale="First"
         )
@@ -329,12 +329,12 @@ class TestDistributedLedger(unittest.IsolatedAsyncioTestCase):
 
     async def test_hash_chain_links(self):
         e1 = await self.ledger.append(
-            tenant_id="um6p", workflow_id="WF-001",
+            tenant_id="partner_a", workflow_id="WF-001",
             membrane_decision="allow", operating_mode="SHADOW",
             s_score=1.0, ds_de=0.0, ces_state="REST", rationale="E1"
         )
         e2 = await self.ledger.append(
-            tenant_id="um6p", workflow_id="WF-001",
+            tenant_id="partner_a", workflow_id="WF-001",
             membrane_decision="allow_with_alert", operating_mode="SHADOW",
             s_score=0.9, ds_de=-0.1, ces_state="TENSION", rationale="E2"
         )
@@ -343,7 +343,7 @@ class TestDistributedLedger(unittest.IsolatedAsyncioTestCase):
     async def test_verify_valid_chain(self):
         for i in range(5):
             await self.ledger.append(
-                tenant_id="um6p", workflow_id=f"WF-{i:03d}",
+                tenant_id="partner_a", workflow_id=f"WF-{i:03d}",
                 membrane_decision="allow", operating_mode="SHADOW",
                 s_score=1.0 - i * 0.05, ds_de=-0.02, ces_state="REST", rationale=f"Entry {i}"
             )
@@ -355,7 +355,7 @@ class TestDistributedLedger(unittest.IsolatedAsyncioTestCase):
     async def test_tamper_detection(self):
         for i in range(3):
             await self.ledger.append(
-                tenant_id="um6p", workflow_id="WF-001",
+                tenant_id="partner_a", workflow_id="WF-001",
                 membrane_decision="allow", operating_mode="SHADOW",
                 s_score=1.0, ds_de=0.0, ces_state="REST", rationale=f"Entry {i}"
             )
@@ -378,7 +378,7 @@ class TestDistributedLedger(unittest.IsolatedAsyncioTestCase):
         # Append exactly EPOCH_SIZE entries to trigger sealing
         for i in range(EPOCH_SIZE):
             await self.ledger.append(
-                tenant_id="um6p", workflow_id=f"WF-{i:04d}",
+                tenant_id="partner_a", workflow_id=f"WF-{i:04d}",
                 membrane_decision="allow", operating_mode="SHADOW",
                 s_score=1.0, ds_de=0.0, ces_state="REST", rationale=f"E{i}"
             )
@@ -392,7 +392,7 @@ class TestDistributedLedger(unittest.IsolatedAsyncioTestCase):
         entries = []
         for i in range(EPOCH_SIZE):
             e = await self.ledger.append(
-                tenant_id="um6p", workflow_id=f"WF-{i:04d}",
+                tenant_id="partner_a", workflow_id=f"WF-{i:04d}",
                 membrane_decision="allow", operating_mode="SHADOW",
                 s_score=1.0, ds_de=0.0, ces_state="REST", rationale=f"E{i}"
             )
@@ -409,7 +409,7 @@ class TestDistributedLedger(unittest.IsolatedAsyncioTestCase):
     async def test_recent_entries_limit(self):
         for i in range(10):
             await self.ledger.append(
-                tenant_id="um6p", workflow_id="WF-001",
+                tenant_id="partner_a", workflow_id="WF-001",
                 membrane_decision="allow", operating_mode="SHADOW",
                 s_score=1.0, ds_de=0.0, ces_state="REST", rationale=f"E{i}"
             )

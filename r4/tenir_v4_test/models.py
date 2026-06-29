@@ -86,7 +86,7 @@ class PolicyBundle:
       the shared PolicyEngine.evaluate_membrane() — no local thresholds.
     """
 
-    version: str = "um6p-shadow-v4-test-policy-2"
+    version: str = "partner_a-shadow-v4-test-policy-2"
     epsilon: float = 1e-6
     s_alert_floor: float = 0.90
     s_block_floor: float = 0.75
@@ -153,7 +153,7 @@ class PolicyBundle:
 
         engine = PolicyEngine(
             version=self.version,
-            scope="um6p-shadow-v4-r4-runtime",
+            scope="partner_a-shadow-v4-r4-runtime",
             tau_floor=self.tau_floor,
             epsilon=self.epsilon,
             s_alert_floor=self.s_alert_floor,

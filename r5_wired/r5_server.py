@@ -16,7 +16,7 @@ Environment variables:
   NEO4J_USER         neo4j
   NEO4J_PASSWORD     tenir_password
   NEO4J_DATABASE     tenir
-  NEO4J_SEED         true  (seed UM6P/OCP ontology on first run)
+  NEO4J_SEED         true  (seed partner_a/partner_b ontology on first run)
   OLLAMA_MODEL       tenir-nsl:latest  (or "grammar" for grammar-only mode)
   OLLAMA_URL         http://localhost:11434
   LEDGER_PATH        ledger/tenir_ledger.jsonl
@@ -132,7 +132,7 @@ async def lifespan(app: FastAPI):
     app.state.ces = CESMatrix()
     # Canonical operating mode (Sprint 12: use SHADOW_PASSIVE, not loose "SHADOW")
     app.state.mode = "SHADOW_PASSIVE"
-    app.state.tenant_id = os.getenv("TENANT_ID", "um6p")
+    app.state.tenant_id = os.getenv("TENANT_ID", "partner_a")
 
     logger.info("[R5] IRON OMEGA R5 ready")
     yield

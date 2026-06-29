@@ -159,12 +159,12 @@ class NSLInferenceEngine:
 
     Usage:
         engine = NSLInferenceEngine(config)
-        result = engine.infer("Accelerate the OCP-H2 R&D project urgently")
+        result = engine.infer("Accelerate the partner_b-H2 R&D project urgently")
         # result = {
         #     "backend": "llm" | "grammar",
         #     "intent": "ACCELERATE",
         #     "entity_type": "RND_PROJECT",
-        #     "entity_identifier": "OCP-H2",
+        #     "entity_identifier": "partner_b-H2",
         #     "params": {"pressure": 0.78, "velocity": 0.89, "capacity": 0.85, "option_space": 0.52},
         #     "confidence": 0.94,
         #     "latency_ms": 312,

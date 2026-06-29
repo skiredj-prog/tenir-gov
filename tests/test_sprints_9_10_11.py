@@ -205,7 +205,8 @@ class TestCopyLint:
     def test_deprecated_cave_always_blocks(self, tmp_path):
         f = tmp_path / "cave.md"
         f.write_text(
-            "The CAVE matrix (Control · Aim · Veto · Epistemics) governs.\n"
+            "The CAVE matrix (Control · Aim · Veto · Epistemics) governs.\n",
+            encoding="utf-8"
         )
         report = CopyLinter().lint_file(f)
         assert report.blocking

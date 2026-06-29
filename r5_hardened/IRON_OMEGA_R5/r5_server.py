@@ -16,7 +16,7 @@ Environment variables:
   NEO4J_USER         neo4j
   NEO4J_PASSWORD     tenir_password
   NEO4J_DATABASE     tenir
-  NEO4J_SEED         true  (seed UM6P/OCP ontology on first run)
+  NEO4J_SEED         true  (seed partner_a/partner_b ontology on first run)
   OLLAMA_MODEL       tenir-nsl:latest  (or "grammar" for grammar-only mode)
   OLLAMA_URL         http://localhost:11434
   LEDGER_PATH        ledger/tenir_ledger.jsonl
@@ -99,7 +99,7 @@ async def lifespan(app: FastAPI):
 
     # Initialize policy first — runtime depends on a validated shared policy contract
     policy_profile = os.getenv("TENIR_POLICY_PROFILE", "um6p_shadow_v4").strip().lower()
-    if policy_profile in {"ocp", "ocp_sovereign", "ocp_sovereign_pilot"}:
+    if policy_profile in {"partner_b", "ocp_sovereign", "ocp_sovereign_pilot"}:
         app.state.policy = PolicyEngine.ocp_sovereign_pilot()
     elif policy_profile in {"default", "canonical"}:
         app.state.policy = PolicyEngine.default()
@@ -129,7 +129,7 @@ async def lifespan(app: FastAPI):
     app.state.kernel = TrajectoryKernel(epsilon=app.state.policy.epsilon)
     app.state.ces = CESMatrix()
     app.state.mode = ledger.recover_last_mode(default=OperatingModeNames.SHADOW_PASSIVE)
-    app.state.tenant_id = os.getenv("TENANT_ID", "um6p")
+    app.state.tenant_id = os.getenv("TENANT_ID", "partner_a")
 
     logger.info("[R5] IRON OMEGA R5 ready")
     yield

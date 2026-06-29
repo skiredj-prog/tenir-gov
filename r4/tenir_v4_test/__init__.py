@@ -1,4 +1,4 @@
-"""TENIR internal v4 test line for UM6P shadow-mode UAT."""
+"""TENIR internal v4 test line for partner_a shadow-mode UAT."""
 
 from .adjudication import (
     DIMENSION_WEIGHTS,

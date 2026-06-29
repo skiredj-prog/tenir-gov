@@ -27,8 +27,8 @@ Please use [GitHub Issues](https://github.com/skiredj-prog/tenir-gov/issues) for
 3. **Validate the policy contract** (required for any change to `tenir_governance/`):
    ```bash
    tenir-validate --policy default
-   tenir-validate --policy um6p
-   tenir-validate --policy ocp
+   tenir-validate --policy partner_a
+   tenir-validate --policy partner_b
    ```
 4. **Run copy-lint** if you modify any `.md` or `.html` files:
    ```bash

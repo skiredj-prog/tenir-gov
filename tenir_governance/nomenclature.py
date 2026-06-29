@@ -325,8 +325,8 @@ class AdmissibilityClass:
 # ─── INSTITUTIONAL NAMES ─────────────────────────────────────────────────────
 
 class InstitutionalNames:
-    UM6P  = "UM6P"
-    OCP   = "OCP"
+    partner_a  = "partner_a"
+    partner_b   = "partner_b"
     TENIR = "TENIR"
 
     UM6P_ROLE  = "opens the space through experimentation, pedagogy, and impact"

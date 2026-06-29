@@ -3,14 +3,14 @@
 **Version:** 1.0.0-rc2
 **Policy:** `tenir-canonical-v1.0.0`
 **Date:** 2026-04-19
-**Scope:** Unified governance runtime for R4 (UM6P Shadow v4) and R5 (IRON_OMEGA)
+**Scope:** Unified governance runtime for R4 (partner_a Shadow v4) and R5 (IRON_OMEGA)
 
 ---
 
 ## Executive Summary
 
 This package delivers the institutional-grade governance runtime requested for the
-UM6P/OCP engagement. It merges R4 and R5 into a single `tenir_governance` package
+partner_a/partner_b engagement. It merges R4 and R5 into a single `tenir_governance` package
 with:
 
 - one source of truth for all nomenclature (R4, R5, and business layers)
@@ -23,7 +23,7 @@ with:
 - a ledger migration tool for legacy labels (SCHIZOPHRENIA → SIGNAL_CONFLICT etc.)
 
 **Test status: 293/293 passed. Validator: 9/9 passed across all three policy
-variants (default, UM6P Shadow v4, OCP Sovereign Pilot).**
+variants (default, partner_a Shadow v4, partner_b Sovereign Pilot).**
 
 ---
 
@@ -94,8 +94,8 @@ with a blocking `all-clear` gate.
 
 - `ces_rest`, `ces_metabolizing`, `ces_tension`, `ces_schizophrenia`, `ces_collapse`
 - `tau_breach`, `option_space_collapse`, `shadow_mode`, `kernel_math`
-- `ocp_h2` — OCP-H2-2026-001 industrial scenarios
-- `um6p` — UM6P partnership scenarios
+- `ocp_h2` — partner_b-H2-2026-001 industrial scenarios
+- `partner_a` — partner_a partnership scenarios
 - `nsl_mapping` — NSL intent → kernel parameter mapping
 - `r4_compat`, `stress`, `edge_cases`
 - `holding_first`, `enforce_ceremony`
@@ -251,7 +251,7 @@ the rename-now directives without invalidating forensic replay.
 | Ledger migration (Sprint 11) | 5 | PASS |
 | **TOTAL** | **293** | **PASS** |
 
-Validator standalone run: `9/9 checks passed` across default, UM6P, and OCP
+Validator standalone run: `9/9 checks passed` across default, partner_a, and partner_b
 policy variants. Policy fingerprint (default): `d083e0b82a16c04d`.
 
 ---
@@ -315,8 +315,8 @@ pip install -e .
 
 ```bash
 tenir-validate --policy default
-tenir-validate --policy um6p
-tenir-validate --policy ocp --json
+tenir-validate --policy partner_a
+tenir-validate --policy partner_b --json
 ```
 
 ### Run full regression suite

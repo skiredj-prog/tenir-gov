@@ -16,7 +16,7 @@ class TestInstitutionalLedgerHardening(unittest.IsolatedAsyncioTestCase):
             path = os.path.join(tmp, "ledger.jsonl")
             ledger = DistributedLedger(ledger_path=path)
             await ledger.append(
-                tenant_id="um6p",
+                tenant_id="partner_a",
                 workflow_id="WF-001",
                 membrane_decision="allow_with_alert",
                 operating_mode="SHADOW",
@@ -24,7 +24,7 @@ class TestInstitutionalLedgerHardening(unittest.IsolatedAsyncioTestCase):
                 ds_de=-0.04,
                 ces_state="TENSION",
                 rationale="threshold nearing alert floor",
-                policy_version="tenir-um6p-shadow-v4-1.0.0",
+                policy_version="tenir-partner_a-shadow-v4-1.0.0",
             )
             reloaded = DistributedLedger(ledger_path=path)
             report = reloaded.verify_full_chain()
@@ -37,7 +37,7 @@ class TestInstitutionalLedgerHardening(unittest.IsolatedAsyncioTestCase):
             path = os.path.join(tmp, "ledger.jsonl")
             ledger = DistributedLedger(ledger_path=path)
             await ledger.append(
-                tenant_id="um6p",
+                tenant_id="partner_a",
                 workflow_id="WF-002",
                 membrane_decision="allow",
                 operating_mode="SHADOW",
@@ -45,7 +45,7 @@ class TestInstitutionalLedgerHardening(unittest.IsolatedAsyncioTestCase):
                 ds_de=0.0,
                 ces_state="REST",
                 rationale="stable",
-                policy_version="tenir-um6p-shadow-v4-1.0.0",
+                policy_version="tenir-partner_a-shadow-v4-1.0.0",
             )
             transition = ledger.append_control_transition(
                 transition="SHADOW_TO_ENFORCE",
@@ -53,7 +53,7 @@ class TestInstitutionalLedgerHardening(unittest.IsolatedAsyncioTestCase):
                 to_mode="ENFORCE",
                 operator_id="op-001",
                 reason="close the glass",
-                policy_version="tenir-um6p-shadow-v4-1.0.0",
+                policy_version="tenir-partner_a-shadow-v4-1.0.0",
             )
             self.assertEqual(transition["entry_type"], "control_transition")
             reloaded = DistributedLedger(ledger_path=path)
@@ -64,7 +64,7 @@ class TestInstitutionalLedgerHardening(unittest.IsolatedAsyncioTestCase):
             path = os.path.join(tmp, "ledger.jsonl")
             ledger = DistributedLedger(ledger_path=path)
             first = await ledger.append(
-                tenant_id="um6p",
+                tenant_id="partner_a",
                 workflow_id="WF-003",
                 membrane_decision="allow",
                 operating_mode="SHADOW",
@@ -72,7 +72,7 @@ class TestInstitutionalLedgerHardening(unittest.IsolatedAsyncioTestCase):
                 ds_de=0.0,
                 ces_state="REST",
                 rationale="stable",
-                policy_version="tenir-um6p-shadow-v4-1.0.0",
+                policy_version="tenir-partner_a-shadow-v4-1.0.0",
             )
             transition = ledger.append_control_transition(
                 transition="SHADOW_TO_ENFORCE",
@@ -80,6 +80,6 @@ class TestInstitutionalLedgerHardening(unittest.IsolatedAsyncioTestCase):
                 to_mode="ENFORCE",
                 operator_id="op-002",
                 reason="elevated risk",
-                policy_version="tenir-um6p-shadow-v4-1.0.0",
+                policy_version="tenir-partner_a-shadow-v4-1.0.0",
             )
             self.assertEqual(transition["previous_hash"], first.entry_hash)

@@ -29,7 +29,7 @@ def _load_template(path: Path) -> dict[str, object]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Generate an OCP Sovereignty pilot payload from a template or sample."
+        description="Generate an partner_b Sovereignty pilot payload from a template or sample."
     )
     parser.add_argument(
         "--scenario",
@@ -69,7 +69,7 @@ def main() -> None:
 
     args.output_json.parent.mkdir(parents=True, exist_ok=True)
     args.output_json.write_text(rendered + "\n", encoding="utf-8")
-    print(f"Wrote OCP Sovereignty pilot payload to {args.output_json}")
+    print(f"Wrote partner_b Sovereignty pilot payload to {args.output_json}")
 
 
 if __name__ == "__main__":

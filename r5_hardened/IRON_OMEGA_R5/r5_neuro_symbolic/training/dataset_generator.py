@@ -158,12 +158,12 @@ _TEMPLATES: List[Dict[str, Any]] = [
         }
     },
     {
-        "input": "Expedite the Phase 2 electrolysis contract before the OCP deadline.",
+        "input": "Expedite the Phase 2 electrolysis contract before the partner_b deadline.",
         "ast": {
             "intent": "ACCELERATE", "entity_type": "PROCUREMENT_CONTRACT",
             "entity_identifier": "Phase 2 electrolysis contract",
             "modifiers": {"urgency": 0.90, "risk": null, "scale": null, "capacity_delta": null},
-            "context": "OCP deadline constraint", "confidence": 0.94
+            "context": "partner_b deadline constraint", "confidence": 0.94
         }
     },
     {
@@ -179,9 +179,9 @@ _TEMPLATES: List[Dict[str, Any]] = [
 
 # Filler project names for template substitution
 _PROJECTS = [
-    "OCP-H2-2026", "UM6P-AI-Pilot", "GreenPhosphate-III", "SolarMining-Q2",
-    "AgriTech-Phase2", "WaterTreatment-OCP", "Electrolysis-Pilot",
-    "MaterialsResearch-007", "NanoLayer-UM6P", "CarbonCapture-2025",
+    "partner_b-H2-2026", "partner_a-AI-Pilot", "GreenPhosphate-III", "SolarMining-Q2",
+    "AgriTech-Phase2", "WaterTreatment-partner_b", "Electrolysis-Pilot",
+    "MaterialsResearch-007", "NanoLayer-partner_a", "CarbonCapture-2025",
 ]
 
 # Paraphrase variants for linguistic diversity

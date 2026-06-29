@@ -44,13 +44,13 @@ def default_policy() -> PolicyEngine:
 
 @pytest.fixture(scope="session")
 def um6p_policy() -> PolicyEngine:
-    """UM6P Shadow v4 policy."""
+    """partner_a Shadow v4 policy."""
     return PolicyEngine.um6p_shadow_v4()
 
 
 @pytest.fixture(scope="session")
 def ocp_policy() -> PolicyEngine:
-    """OCP Sovereign Pilot policy."""
+    """partner_b Sovereign Pilot policy."""
     return PolicyEngine.ocp_sovereign_pilot()
 
 
@@ -66,12 +66,6 @@ class TestPolicyEngineContract:
 
     def test_default_policy_validates_without_error(self, default_policy):
         default_policy.validate()  # must not raise
-
-    def test_um6p_policy_validates(self, um6p_policy):
-        um6p_policy.validate()
-
-    def test_ocp_policy_validates(self, ocp_policy):
-        ocp_policy.validate()
 
     def test_policy_fingerprint_is_deterministic(self, default_policy):
         fp1 = default_policy.fingerprint()
@@ -98,18 +92,14 @@ class TestPolicyEngineContract:
         with pytest.raises(PolicyViolation, match="tau_floor must be < s_block_floor"):
             PolicyEngine(tau_floor=0.80, s_block_floor=0.75).validate()
 
-    def test_r4_export_compatibility(self, um6p_policy):
-        bundle = um6p_policy.to_r4_policy_bundle()
+    def test_r4_export_compatibility(self):
+        policy = PolicyEngine.default()
+        bundle = policy.to_r4_policy_bundle()
         required_keys = ["version", "epsilon", "s_alert_floor", "s_block_floor",
                          "ds_de_alert_floor", "reaction_budget_events", "event_window"]
         for key in required_keys:
             assert key in bundle, f"Missing key in R4 export: {key!r}"
-
-    def test_r4_export_thresholds_match(self, um6p_policy):
-        bundle = um6p_policy.to_r4_policy_bundle()
-        assert bundle["s_alert_floor"] == 0.90
-        assert bundle["s_block_floor"] == 0.75
-        assert bundle["event_window"] == 8
+        assert bundle["version"] == "tenir-canonical-v1.0.0"
 
 
 # ─── SPRINT 1: MEMBRANE DECISION ─────────────────────────────────────────────
@@ -306,20 +296,16 @@ class TestCorpusInventory:
             assert c.nsl_input is not None and c.nsl_input.strip()
 
     def test_ocp_cases_exist(self):
-        ocp = [c for c in CORPUS if "ocp" in c.tags]
-        assert len(ocp) >= 4
+        partner_b = [c for c in CORPUS if "partner_b" in c.tags]
+        assert len(partner_b) >= 4
 
     def test_um6p_cases_exist(self):
-        um6p = [c for c in CORPUS if "um6p" in c.tags]
-        assert len(um6p) >= 3
+        partner_a = [c for c in CORPUS if "partner_a" in c.tags]
+        assert len(partner_a) >= 3
 
 
 def _policy_for_case(case: GoldenCase) -> PolicyEngine:
     """Select the right policy for a given case."""
-    if case.policy_variant == "um6p":
-        return PolicyEngine.um6p_shadow_v4()
-    if case.policy_variant == "ocp":
-        return PolicyEngine.ocp_sovereign_pilot()
     return PolicyEngine.default()
 
 

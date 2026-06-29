@@ -119,10 +119,6 @@ class TENIRValidator:
         """Factory for CI pipeline use."""
         return cls(policy=PolicyEngine.default(), expected_version="tenir-canonical-v1.0.0")
 
-    @classmethod
-    def for_um6p_shadow(cls) -> "TENIRValidator":
-        """Factory for UM6P shadow v4 compatibility checks."""
-        return cls(policy=PolicyEngine.um6p_shadow_v4())
 
     # ── Public entry point ────────────────────────────────────────────────────
 
@@ -267,7 +263,7 @@ class TENIRValidator:
         # Classifier now uses activity (P·V) to distinguish REST from METABOLIZING.
         p = self.policy
         # Build fixtures adaptively using the actual policy thresholds.
-        # This lets default, UM6P and OCP policies all pass CES-001.
+        # This lets default, partner_a and partner_b policies all pass CES-001.
         s_alert = p.s_alert_floor
         s_block = p.s_block_floor
         tau = p.tau_floor

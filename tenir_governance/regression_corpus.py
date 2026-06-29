@@ -7,7 +7,7 @@ SPRINT 4 — Expand golden cases into true regression corpus
   - All 5 CES states
   - All 4 membrane decisions × all 4 operating modes
   - TAU floor boundary conditions
-  - OCP hydrogen / UM6P R&D scenarios
+  - partner_b hydrogen / partner_a R&D scenarios
   - SCHIZOPHRENIA detection
   - Horizon exhaustion
   - Option space collapse
@@ -54,7 +54,7 @@ class GoldenCase:
     # Optional metadata
     policy_variant: str = "default"
     tags: List[str] = field(default_factory=list)
-    business_scenario: Optional[str] = None  # human-readable UM6P/OCP context
+    business_scenario: Optional[str] = None  # human-readable partner_a/partner_b context
     nsl_input: Optional[str] = None          # if this case tests NSL compilation
 
 
@@ -69,8 +69,8 @@ CORPUS: List[GoldenCase] = [
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow", expected_ces_state="REST",
         expected_alert=False, expected_intended_block=False,
-        business_scenario="UM6P R&D project at start — low pressure, high capacity",
-        tags=["ces", "stable", "um6p"]),
+        business_scenario="partner_a R&D project at start — low pressure, high capacity",
+        tags=["ces", "stable", "partner_a"]),
 
     GoldenCase("G002", "ces_rest",
         "REST state with moderate capacity",
@@ -95,8 +95,8 @@ CORPUS: List[GoldenCase] = [
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow", expected_ces_state="REST",
         expected_alert=False, expected_intended_block=False,
-        business_scenario="OCP procurement cycle ramping — moderate load",
-        tags=["ces", "metabolizing", "ocp"]),
+        business_scenario="partner_b procurement cycle ramping — moderate load",
+        tags=["ces", "metabolizing", "partner_b"]),
 
     GoldenCase("G011", "ces_metabolizing",
         "Metabolizing approaching alert floor",
@@ -121,8 +121,8 @@ CORPUS: List[GoldenCase] = [
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow_with_alert", expected_ces_state="TENSION",
         expected_alert=True, expected_intended_block=False,
-        business_scenario="OCP H2 electrolyzer selection under budget pressure",
-        tags=["ces", "tension", "ocp", "alert"]),
+        business_scenario="partner_b H2 electrolyzer selection under budget pressure",
+        tags=["ces", "tension", "partner_b", "alert"]),
 
     GoldenCase("G021", "ces_tension",
         "Tension at S=0.82, option space compressed",
@@ -155,8 +155,8 @@ CORPUS: List[GoldenCase] = [
         operating_mode="SHADOW_CRITICAL",
         expected_decision="allow_with_intended_block", expected_ces_state="SIGNAL_CONFLICT",
         expected_alert=True, expected_intended_block=True,
-        business_scenario="UM6P committee paralysis — high options, high pressure, no convergence",
-        tags=["ces", "schizophrenia", "um6p"]),
+        business_scenario="partner_a committee paralysis — high options, high pressure, no convergence",
+        tags=["ces", "schizophrenia", "partner_a"]),
 
     GoldenCase("G031", "ces_schizophrenia",
         "Schizophrenia boundary — S=0.75, option_space=0.65",
@@ -181,8 +181,8 @@ CORPUS: List[GoldenCase] = [
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow_with_intended_block", expected_ces_state="COLLAPSE",
         expected_alert=True, expected_intended_block=True,
-        business_scenario="OCP procurement lock-in — structural collapse imminent",
-        tags=["tau", "collapse", "ocp"]),
+        business_scenario="partner_b procurement lock-in — structural collapse imminent",
+        tags=["tau", "collapse", "partner_b"]),
 
     GoldenCase("G041", "tau_breach",
         "TAU breach in ENFORCE — hard block",
@@ -223,8 +223,8 @@ CORPUS: List[GoldenCase] = [
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow_with_alert", expected_ces_state="REST",
         expected_alert=True, expected_intended_block=False,
-        business_scenario="UM6P partnership — alternatives narrowing despite stable operations",
-        tags=["option_space", "alert", "um6p"]),
+        business_scenario="partner_a partnership — alternatives narrowing despite stable operations",
+        tags=["option_space", "alert", "partner_a"]),
 
     GoldenCase("G051", "option_space_collapse",
         "Option space at block floor — combined with tension",
@@ -240,8 +240,8 @@ CORPUS: List[GoldenCase] = [
         operating_mode="ENFORCE",
         expected_decision="block", expected_ces_state="COLLAPSE",
         expected_alert=True, expected_intended_block=True,
-        business_scenario="OCP H2 technology lock-in — no reversibility",
-        tags=["option_space", "lock_in", "ocp", "block"]),
+        business_scenario="partner_b H2 technology lock-in — no reversibility",
+        tags=["option_space", "lock_in", "partner_b", "block"]),
 
     GoldenCase("G053", "option_space_collapse",
         "Option space None — not provided (backwards compat)",
@@ -317,75 +317,75 @@ CORPUS: List[GoldenCase] = [
         expected_alert=True, expected_intended_block=True,
         tags=["kernel", "boundary", "block_floor"]),
 
-    # ── GROUP 9: OCP Green Hydrogen scenarios ─────────────────────────────────
+    # ── GROUP 9: partner_b Green Hydrogen scenarios ─────────────────────────────────
     GoldenCase("G080", "ocp_h2",
-        "OCP H2 — PEM technology under budget pressure",
+        "partner_b H2 — PEM technology under budget pressure",
         pressure=0.8, velocity=0.7, capacity=1.2, option_space=0.55,
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow", expected_ces_state="REST",
         expected_alert=False, expected_intended_block=False,
-        business_scenario="OCP-H2-2026-001: PEM electrolyzer LCOH assessment — moderate pressure",
-        nsl_input="Accelerate the OCP H2 R&D procurement due to budget risk",
-        tags=["ocp", "h2", "rnd", "nsl"]),
+        business_scenario="partner_b-H2-2026-001: PEM electrolyzer LCOH assessment — moderate pressure",
+        nsl_input="Accelerate the partner_b H2 R&D procurement due to budget risk",
+        tags=["partner_b", "h2", "rnd", "nsl"]),
 
     GoldenCase("G081", "ocp_h2",
-        "OCP H2 — lock-in risk detected",
+        "partner_b H2 — lock-in risk detected",
         pressure=1.4, velocity=1.3, capacity=1.0, option_space=0.22,
         operating_mode="SHADOW_CRITICAL",
         expected_decision="allow_with_intended_block", expected_ces_state="COLLAPSE",
         expected_alert=True, expected_intended_block=True,
-        business_scenario="OCP-H2-2026-001: Technology selection premature lock-in — alkaline only",
+        business_scenario="partner_b-H2-2026-001: Technology selection premature lock-in — alkaline only",
         nsl_input="Restrict the electrolyzer procurement to alkaline technology immediately",
-        tags=["ocp", "h2", "lock_in", "nsl"]),
+        tags=["partner_b", "h2", "lock_in", "nsl"]),
 
     GoldenCase("G082", "ocp_h2",
-        "OCP H2 — LCOH assumption not stabilized, block advisable",
+        "partner_b H2 — LCOH assumption not stabilized, block advisable",
         pressure=1.8, velocity=1.6, capacity=0.7, option_space=0.18,
         operating_mode="ENFORCE",
         expected_decision="block", expected_ces_state="COLLAPSE",
         expected_alert=True, expected_intended_block=True,
-        business_scenario="OCP-H2-2026-001: LCOH cost assumptions unstable — governance block required",
-        tags=["ocp", "h2", "enforce", "block"]),
+        business_scenario="partner_b-H2-2026-001: LCOH cost assumptions unstable — governance block required",
+        tags=["partner_b", "h2", "enforce", "block"]),
 
     GoldenCase("G083", "ocp_h2",
-        "OCP H2 — delay procurement for option space recovery",
+        "partner_b H2 — delay procurement for option space recovery",
         pressure=0.6, velocity=0.5, capacity=1.1, option_space=0.6,
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow", expected_ces_state="REST",
         expected_alert=False, expected_intended_block=False,
-        business_scenario="OCP-H2-2026-001: Delay procurement to maintain 3-technology option space",
+        business_scenario="partner_b-H2-2026-001: Delay procurement to maintain 3-technology option space",
         nsl_input="Delay the procurement contract for H2 electrolyzer until LCOH study complete",
-        tags=["ocp", "h2", "delay", "nsl"]),
+        tags=["partner_b", "h2", "delay", "nsl"]),
 
-    # ── GROUP 10: UM6P institutional scenarios ────────────────────────────────
-    GoldenCase("G090", "um6p",
-        "UM6P R&D — partnership initiation, clean",
+    # ── GROUP 10: partner_a institutional scenarios ────────────────────────────────
+    GoldenCase("G090", "partner_a",
+        "partner_a R&D — partnership initiation, clean",
         pressure=0.25, velocity=0.3, capacity=1.8, option_space=0.85,
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow", expected_ces_state="REST",
         expected_alert=False, expected_intended_block=False,
-        business_scenario="UM6P partnership with OCP for applied research — early stage",
-        nsl_input="Accelerate the R&D partnership project with OCP for hydrogen research",
-        tags=["um6p", "rnd", "partnership", "nsl"]),
+        business_scenario="partner_a partnership with partner_b for applied research — early stage",
+        nsl_input="Accelerate the R&D partnership project with partner_b for hydrogen research",
+        tags=["partner_a", "rnd", "partnership", "nsl"]),
 
-    GoldenCase("G091", "um6p",
-        "UM6P — committee velocity overload",
+    GoldenCase("G091", "partner_a",
+        "partner_a — committee velocity overload",
         pressure=1.3, velocity=1.4, capacity=0.9, option_space=0.4,
         operating_mode="SHADOW_CRITICAL",
         expected_decision="allow_with_intended_block", expected_ces_state="TENSION",
         expected_alert=True, expected_intended_block=True,
-        business_scenario="UM6P governance committee pushing too fast on multiple simultaneous decisions",
-        tags=["um6p", "velocity", "schizophrenia"]),
+        business_scenario="partner_a governance committee pushing too fast on multiple simultaneous decisions",
+        tags=["partner_a", "velocity", "schizophrenia"]),
 
-    GoldenCase("G092", "um6p",
-        "UM6P — budget restriction, moderate",
+    GoldenCase("G092", "partner_a",
+        "partner_a — budget restriction, moderate",
         pressure=0.7, velocity=0.8, capacity=1.0, option_space=0.55,
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow", expected_ces_state="REST",
         expected_alert=False, expected_intended_block=False,
-        business_scenario="UM6P restricts R&D spending — metabolizing the constraint",
+        business_scenario="partner_a restricts R&D spending — metabolizing the constraint",
         nsl_input="Restrict budget allocation for applied research to 80% of plan",
-        tags=["um6p", "budget", "restrict", "nsl"]),
+        tags=["partner_a", "budget", "restrict", "nsl"]),
 
     # ── GROUP 11: NSL intent → parameter mapping ──────────────────────────────
     GoldenCase("G100", "nsl_mapping",
@@ -435,8 +435,8 @@ CORPUS: List[GoldenCase] = [
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow", expected_ces_state="REST",
         expected_alert=False, expected_intended_block=False,
-        policy_variant="um6p",
-        tags=["r4", "compat", "um6p"]),
+        policy_variant="partner_a",
+        tags=["r4", "compat", "partner_a"]),
 
     GoldenCase("G111", "r4_compat",
         "R4 PolicyBundle: alert at R4 s_alert_floor=0.90",
@@ -444,7 +444,7 @@ CORPUS: List[GoldenCase] = [
         operating_mode="SHADOW_PASSIVE",
         expected_decision="allow", expected_ces_state="METABOLIZING",
         expected_alert=False, expected_intended_block=False,
-        policy_variant="um6p",
+        policy_variant="partner_a",
         tags=["r4", "compat", "alert_floor"]),
 
     GoldenCase("G112", "r4_compat",
@@ -453,7 +453,7 @@ CORPUS: List[GoldenCase] = [
         operating_mode="ENFORCE",
         expected_decision="block", expected_ces_state="COLLAPSE",
         expected_alert=True, expected_intended_block=True,
-        policy_variant="um6p",
+        policy_variant="partner_a",
         tags=["r4", "compat", "block_floor", "enforce"]),
 
     # ── GROUP 13: Stress and soak scenarios ───────────────────────────────────

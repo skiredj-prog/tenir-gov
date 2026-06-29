@@ -1,14 +1,14 @@
 {
-  "schema_version": "ocp-sovereignty-pilot-v1",
+  "schema_version": "partner_b-sovereignty-pilot-v1",
   "pilot": {
-    "pilot_id": "ocp-sovereignty-amplified-loop",
-    "title": "OCP Sovereignty Pilot - Amplified Maintenance Override Loop",
-    "institution": "OCP Sovereignty",
+    "pilot_id": "partner_b-sovereignty-amplified-loop",
+    "title": "partner_b Sovereignty Pilot - Amplified Maintenance Override Loop",
+    "institution": "partner_b Sovereignty",
     "workflow": "sense-adjudicate-decide-act",
     "reporting_mode": "dual"
   },
   "tau_profile": {
-    "tau_id": "TAU-OCP-SOV-01",
+    "tau_id": "TAU-partner_b-SOV-01",
     "protected_identity_statement": "Protect sovereign decision continuity without sacrificing human legibility or bounded intervention.",
     "invariants": [
       "Bounded authority",
@@ -278,9 +278,9 @@
     "authoritative_state": "SHADOW_CRITICAL"
   },
   "report_layers": {
-    "executive_summary": "OCP sovereignty posture reads at 70/100, adjudication at 64/100, systemic loop visibility at 64/100, and evidence coverage at 79/100. The current verdict is REJECT with a recommended next action of ENFORCE. Evidence gate: FULL_ACTION.",
+    "executive_summary": "partner_b sovereignty posture reads at 70/100, adjudication at 64/100, systemic loop visibility at 64/100, and evidence coverage at 79/100. The current verdict is REJECT with a recommended next action of ENFORCE. Evidence gate: FULL_ACTION.",
     "operator_summary": "Loop reading: incoming pressure in industrial-operations crosses into system response through transmission, membrane, creates an outgoing imprint in institutional, then returns through information with lag visible in the loop closes within hours, before review discipline catches up.. Current posture: REJECT / ENFORCE.",
-    "institutional_readout": "OCP Sovereignty can review this payload as a dual report rather than a single dashboard. The institutional reading remains bounded, auditable, and human-legible. Recommended posture: REJECT with ENFORCE. Primary contradiction: Short-term industrial relief is increasing long-term authority exposure..",
-    "adjudication_readout": "Adjudication is being performed around TAU `TAU-OCP-SOV-01` as reference, not as deciding subject. Protected invariants in view: Bounded authority, Verifiable truth path, Continuity under consequence. Outcome: REJECT. Next viable action: ENFORCE. Key contradiction: Short-term industrial relief is increasing long-term authority exposure.."
+    "institutional_readout": "partner_b Sovereignty can review this payload as a dual report rather than a single dashboard. The institutional reading remains bounded, auditable, and human-legible. Recommended posture: REJECT with ENFORCE. Primary contradiction: Short-term industrial relief is increasing long-term authority exposure..",
+    "adjudication_readout": "Adjudication is being performed around TAU `TAU-partner_b-SOV-01` as reference, not as deciding subject. Protected invariants in view: Bounded authority, Verifiable truth path, Continuity under consequence. Outcome: REJECT. Next viable action: ENFORCE. Key contradiction: Short-term industrial relief is increasing long-term authority exposure.."
   }
 }

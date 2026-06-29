@@ -65,7 +65,7 @@ class PolicyEngine:
     No governance decision may be produced without a validated PolicyEngine.
 
     Policy version format: <scope>-<variant>-<semver>
-    Example: "tenir-um6p-shadow-v4-1.0.0"
+    Example: "tenir-partner_a-shadow-v4-1.0.0"
     """
 
     # Identity

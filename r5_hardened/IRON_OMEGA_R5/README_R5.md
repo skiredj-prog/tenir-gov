@@ -81,7 +81,7 @@ export NEO4J_URI=bolt://localhost:7687
 export NEO4J_USER=neo4j
 export NEO4J_PASSWORD=tenir_password
 export NEO4J_DATABASE=tenir
-export NEO4J_SEED=true          # Seed UM6P/OCP ontology on first run
+export NEO4J_SEED=true          # Seed partner_a/partner_b ontology on first run
 export OLLAMA_MODEL=grammar     # Use "grammar" until fine-tune is done
 export LEDGER_PATH=ledger/tenir_ledger.jsonl
 export OATH_SECRET=<change_in_production>
@@ -111,7 +111,7 @@ Accepts **natural language or JSON**:
 # Natural language (routed through NSL engine)
 curl -X POST http://localhost:8000/api/v1/adjudicate \
   -H "Content-Type: application/json" \
-  -d '{"raw_input": "Accelerate the OCP-H2-2026 R&D project urgently due to budget risk"}'
+  -d '{"raw_input": "Accelerate the partner_b-H2-2026 R&D project urgently due to budget risk"}'
 
 # Strict JSON (legacy V42CIron format)
 curl -X POST http://localhost:8000/api/v1/adjudicate \
