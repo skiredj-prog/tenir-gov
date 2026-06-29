@@ -9,7 +9,8 @@ class CESState:
     REST:            str = "REST"
     TENSION:         str = "TENSION"
     METABOLIZING:    str = "METABOLIZING"
-    SIGNAL_CONFLICT: str = "SIGNAL_CONFLICT"   # canonical rename (was SCHIZOPHRENIA)
+    SIGNAL_CONFLICT: str = "SIGNAL_CONFLICT"   # canonical rename
+    SCHIZOPHRENIA:   str = "SIGNAL_CONFLICT"   # backward-compat alias
     COLLAPSE:        str = "COLLAPSE"
 
 
