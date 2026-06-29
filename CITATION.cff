@@ -29,7 +29,7 @@ authors:
     given-names: Abdelaziz
     email: skiredj@gmail.com
     affiliation: "TENIR Labs"
-    orcid: ""
+    orcid: https://orcid.org/0009-0003-2678-4069
 identifiers:
   - type: doi
     value: 10.5281/zenodo.10823456
