@@ -14,7 +14,7 @@ on:
 env:
   PYTHON_VERSION: "3.11"
   POLICY_VERSION: "tenir-canonical-v1.0.0"
-  POLICY_FINGERPRINT: "d083e0b82a16c04d"
+  POLICY_FINGERPRINT: "cb96dd8d35197ab0"
 
 jobs:
 
