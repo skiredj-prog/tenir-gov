@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+type: software
+title: "TENIR-Gov: Governance Middleware for AI-Enabled Operational Systems"
+abstract: >
+  TENIR-Gov is an open-source governance middleware positioned between
+  decision-producing AI agents and downstream execution environments.
+  It combines neuro-symbolic validation, graph-based policy evaluation,
+  and cryptographically verifiable Merkle-based audit logging to provide
+  deterministic, model-independent governance for AI-enabled operational systems.
+version: "5.0.0"
+date-released: "2026-06-29"
+license: Apache-2.0
+repository-code: "https://github.com/skiredj-prog/tenir-gov"
+doi: 10.5281/zenodo.10823456
+url: "https://github.com/skiredj-prog/tenir-gov"
+keywords:
+  - governance
+  - middleware
+  - AI safety
+  - policy enforcement
+  - neuro-symbolic
+  - audit ledger
+  - Merkle tree
+  - autonomous agents
+  - compliance
+authors:
+  - family-names: Skiredj
+    given-names: Abdelaziz
+    email: skiredj@gmail.com
+    affiliation: "TENIR Labs"
+    orcid: ""
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.10823456
+    description: "Zenodo archive of TENIR-Gov R5.0.0 (IRON OMEGA R5)"
+references:
+  - type: article
+    title: "TENIR-Gov: Governance Middleware for AI-Enabled Operational Systems"
+    authors:
+      - family-names: Skiredj
+        given-names: Abdelaziz
+    journal: SoftwareX
+    year: 2026
+    doi: 10.5281/zenodo.10823456

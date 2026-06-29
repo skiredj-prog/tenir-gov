@@ -70,7 +70,7 @@ class PolicyEngine:
 
     # Identity
     version: str = "tenir-canonical-v1.0.0"
-    scope: str = "um6p-ocp-pilot"           # institutional context
+    scope: str = "canonical"           
 
     # TAU invariant (canonical: V42CIron origin)
     tau_floor: float = 0.42
@@ -320,52 +320,7 @@ class PolicyEngine:
         p = cls()
         p.validate()
         return p
-
-    @classmethod
-    def um6p_shadow_v4(cls) -> "PolicyEngine":
-        """
-        UM6P Shadow v4 policy — direct equivalent of R4's PolicyBundle
-        version='um6p-shadow-v4-test-policy-2'.
-        Preserves exact threshold values from the R4 hardened package.
-        """
-        p = cls(
-            version="tenir-um6p-shadow-v4-1.0.0",
-            scope="um6p-shadow-pilot",
-            epsilon=1e-6,
-            s_alert_floor=0.90,
-            s_block_floor=0.75,
-            ds_de_alert_floor=-0.05,
-            d2s_de2_alert_floor=-0.03,
-            reaction_budget_events=5,
-            event_window=8,
-            option_space_alert_floor=0.35,
-            option_space_block_floor=0.20,
-        )
-        p.validate()
-        return p
-
-    @classmethod
-    def ocp_sovereign_pilot(cls) -> "PolicyEngine":
-        """
-        OCP Sovereignty Pilot policy — tighter thresholds for industrial context.
-        Reflects OCP's 'hardening of stakes through consequence and scale.'
-        """
-        p = cls(
-            version="tenir-ocp-sovereign-v1.0.0",
-            scope="ocp-green-hydrogen-pilot",
-            epsilon=1e-6,
-            tau_floor=0.50,           # higher TAU for industrial risk
-            s_alert_floor=1.10,
-            s_block_floor=0.85,
-            ds_de_alert_floor=-0.03,
-            d2s_de2_alert_floor=-0.02,
-            reaction_budget_events=3,  # tighter horizon budget
-            event_window=10,
-            option_space_alert_floor=0.40,
-            option_space_block_floor=0.25,
-        )
-        p.validate()
-        return p
+  
 
     def to_r4_policy_bundle(self) -> dict:
         """

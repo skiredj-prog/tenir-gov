@@ -1,3 +1,0 @@
-[console_scripts]
-tenir-sdk = tenir_governance.sdk:main
-tenir-validate = tenir_governance.validator:main

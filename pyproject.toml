@@ -4,9 +4,39 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tenir-governance"
-version = "1.0.0rc2"
-description = "TENIR 2C Institutional Governance Runtime — R4+R5 Unified"
+version = "5.0.0"
+description = "TENIR-Gov: Governance Middleware for AI-Enabled Operational Systems"
+readme = "README.md"
 requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Abdelaziz Skiredj", email = "skiredj@gmail.com" }
+]
+keywords = [
+    "governance", "middleware", "AI safety", "policy enforcement",
+    "neuro-symbolic", "audit ledger", "Merkle tree", "autonomous agents",
+    "compliance", "FastAPI", "Neo4j"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage      = "https://github.com/skiredj-prog/tenir-gov"
+Repository    = "https://github.com/skiredj-prog/tenir-gov"
+Documentation = "https://github.com/skiredj-prog/tenir-gov#readme"
+"Bug Tracker" = "https://github.com/skiredj-prog/tenir-gov/issues"
+DOI           = "https://doi.org/10.5281/zenodo.10823456"
 
 [project.scripts]
 tenir-validate = "tenir_governance.validator:main"
@@ -16,8 +46,8 @@ tenir-sdk      = "tenir_governance.sdk:main"
 packages = ["tenir_governance"]
 
 [tool.pytest.ini_options]
-testpaths     = ["tests"]
-addopts       = "-v --tb=short"
+testpaths = ["tests"]
+addopts   = "-v --tb=short"
 
 [tool.coverage.run]
 source = ["tenir_governance"]

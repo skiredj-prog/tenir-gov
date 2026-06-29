@@ -8,14 +8,18 @@ Public API (Sprint 2 — hardened package boundaries):
   Sub-module internals are not part of the public contract.
 
 Governance Branch:    tenir_governance/
-├── nomenclature.py  — Sprint 0: canonical term registry (R4+R5 unified)
-├── policy_engine.py — Sprint 1: policy + membrane decision (single source)
-├── validator.py     — Sprint 1/3: CI gate (standalone + pytest fixture)
-├── regression_corpus.py — Sprint 4: 60+ golden cases
-└── sdk.py           — Sprint 5: SDK/Governance branch public client
+├── nomenclature.py          — Sprint 0: canonical term registry (R4+R5 unified)
+├── policy_engine.py         — Sprint 1: policy contract + membrane decision
+├── validator.py             — Sprint 1/3: CI gate (standalone + pytest fixture)
+├── regression_corpus.py     — Sprint 4: 281 golden cases
+├── sdk.py                   — Sprint 5: SDK/Governance branch public client
+├── polymorphic_surface.py   — Sprint 10: V5 surface state contract
+├── copy_lint.py             — Sprint 9: public-safe lexicon enforcement
+└── ledger_migrate.py        — Sprint 11: legacy label migration
 
-Version: 1.0.0-rc1
+Version: 5.0.0 (IRON OMEGA R5)
 Policy: tenir-canonical-v1.0.0
+Policy fingerprint: d083e0b82a16c04d
 """
 
 from .nomenclature import (
@@ -72,7 +76,7 @@ from .polymorphic_surface import (
 from .copy_lint import CopyLinter, LintReport as CopyLintReport, Finding as CopyLintFinding
 from .ledger_migrate import migrate_ledger, verify_migrated_ledger, MigrationReport
 
-__version__ = "1.0.0-rc2"
+__version__ = "5.0.0"
 __policy_version__ = "tenir-canonical-v1.0.0"
 
 __all__ = [

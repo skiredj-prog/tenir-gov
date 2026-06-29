@@ -1,0 +1,21 @@
+[build-system]
+requires      = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tenir-v4-test"
+version = "4.0.0"
+description = "TENIR R4 Monitor Runtime — UM6P Shadow v4 (internal test package)"
+requires-python = ">=3.10"
+authors = [
+    { name = "Abdelaziz Skiredj", email = "skiredj@gmail.com" }
+]
+license = { text = "Apache-2.0" }
+
+[tool.setuptools]
+packages = ["tenir_v4_test"]
+package-dir = {"" = "."}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts   = "-v --tb=short"

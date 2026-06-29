@@ -49,7 +49,7 @@ RUN pip install --no-cache-dir \
 RUN mkdir -p /app/ledger /app/audit
 
 # ── Default command: full validation suite ─────────────────────────────────────
-# Runs all 442 tests across four test suites with coverage on tenir_governance.
+# Runs all 445 tests across four test suites with coverage on tenir_governance.
 # Override with: docker compose exec tenir-middleware pytest [args]
 CMD ["pytest", \
      "tests/", \
